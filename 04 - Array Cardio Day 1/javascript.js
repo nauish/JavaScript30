@@ -107,9 +107,22 @@ console.table(inventorAge);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+// const category = document.querySelector(".mw-category");
+// const links = Array.from(category.querySelectorAll("a"));
+// const de = links.map((link) => {
+//   link.textContent;
+// });
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+const alphabeticalPeople = people.sort((left, right) => {
+  const [leftLast, leftFirst] = left.split(", ");
+  const [rightLast, rightFirst] = right.split(", ");
+  if (leftLast > rightLast) return 1;
+  else return -1;
+});
+
+console.table(alphabeticalPeople);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
@@ -129,3 +142,13 @@ const data = [
   "car",
   "truck",
 ];
+
+const reduceData = data.reduce((count, vehicle) => {
+  if (!count[vehicle]) {
+    count[vehicle] = 0;
+  }
+  count[vehicle]++;
+  return count;
+}, {});
+
+console.log(reduceData);
